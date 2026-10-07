@@ -8,6 +8,7 @@ import CartDrawer from './components/cart/CartDrawer';
 import CheckoutModal from './components/checkout/CheckoutModal';
 import ProductDetailModal from './components/shop/ProductDetailModal';
 import WhatsAppButton from './components/common/WhatsAppButton';
+import BackToTop from './components/common/BackToTop';
 import ToastContainer from './components/common/ToastContainer';
 
 // Pages
@@ -77,6 +78,7 @@ export default function App() {
 
         {/* Sticky Floating Action Buttons & Toasts */}
         <WhatsAppButton />
+        <BackToTop />
         <ToastContainer />
       </div>
     </CartProvider>
