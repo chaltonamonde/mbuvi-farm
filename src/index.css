@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Design Tokens - Dark Green & Sky Blue Theme */
+  --color-theme-page: #07130E;            /* Page background: near-black green */
+  --color-theme-section: #0B1F17;         /* Section alternate background */
+  --color-theme-surface: #0F2A1F;         /* Card / surface background */
+  --color-theme-surface-alt: #14382A;     /* Elevated interactive surface */
+  --color-theme-border: #1E4D38;          /* 1px borders */
+  --color-theme-primary: #22C55E;         /* Primary green highlights & buttons */
+  --color-theme-primary-hover: #16A34A;   /* Primary green hover */
+  --color-theme-deep: #14532D;            /* Deep green for headings accents & footers */
+  --color-theme-accent: #38BDF8;          /* Sky blue accents, icons, links, glows */
+  --color-theme-accent-hover: #7DD3FC;    /* Sky blue hover */
+  --color-theme-text-primary: #F0FDF4;    /* Primary light text */
+  --color-theme-text-secondary: #A7C4B5;  /* Secondary sage text */
+  --color-theme-text-muted: #6B8F7E;      /* Muted slate-green captions */
+  --color-gradient-hero: linear-gradient(135deg, #14532D 0%, #22C55E 50%, #38BDF8 100%);
+
+  /* Spacing 8px Scale Tokens */
+  --space-1: 0.5rem;   /* 8px */
+  --space-2: 1rem;     /* 16px */
+  --space-3: 1.5rem;   /* 24px */
+  --space-4: 2rem;     /* 32px */
+  --space-5: 2.5rem;   /* 40px */
+  --space-6: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+
+  /* Radii Tokens */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Typography Scale */
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--color-theme-page);
+  color: var(--color-theme-text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  color-scheme: dark;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-theme-text-primary);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+/* Custom Dark Theme Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #07130E;
+}
+::-webkit-scrollbar-thumb {
+  background: #1E4D38;
+  border-radius: 9999px;
+  border: 2px solid #07130E;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #22C55E;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Component Tokens & Utilities */
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center font-display font-bold text-[#07130E] bg-theme-primary hover:bg-theme-primaryHover active:scale-[0.98] transition-all duration-200 px-6 py-3.5 rounded-farm-md shadow-glow focus:outline-none focus:ring-2 focus:ring-theme-accent focus:ring-offset-2 focus:ring-offset-theme-page;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center font-display font-semibold text-theme-accent bg-transparent border border-theme-accent hover:bg-theme-accent/15 hover:text-theme-accentHover active:scale-[0.98] transition-all duration-200 px-6 py-3.5 rounded-farm-md shadow-subtle focus:outline-none focus:ring-2 focus:ring-theme-accent focus:ring-offset-2 focus:ring-offset-theme-page;
+  }
+
+  .btn-sky {
+    @apply inline-flex items-center justify-center font-display font-bold text-[#07130E] bg-theme-accent hover:bg-theme-accentHover active:scale-[0.98] transition-all duration-200 px-6 py-3.5 rounded-farm-md shadow-skyGlow focus:outline-none focus:ring-2 focus:ring-theme-primary focus:ring-offset-2 focus:ring-offset-theme-page;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center font-display font-semibold text-white bg-[#1FAF38] hover:bg-[#16A34A] active:scale-[0.98] transition-all duration-200 px-5 py-3 rounded-farm-md shadow-card focus:outline-none focus:ring-2 focus:ring-theme-accent focus:ring-offset-2 focus:ring-offset-theme-page;
+  }
+
+  /* Form Elements */
+  .form-input {
+    @apply w-full px-4 py-3 bg-theme-section border border-theme-border rounded-farm-md text-theme-textPrimary placeholder:text-theme-textMuted focus:outline-none focus:ring-2 focus:ring-theme-accent focus:border-theme-accent transition-all;
+  }
+
+  .form-label {
+    @apply block text-xs font-bold uppercase tracking-wider text-theme-textSecondary mb-1.5;
+  }
+
+  /* Cards */
+  .farm-card {
+    @apply bg-theme-surface border border-theme-border rounded-farm-lg p-6 shadow-card hover:border-theme-accent/60 hover:shadow-cardHover transition-all duration-300;
+  }
+
+  /* Badges */
+  .badge-instock {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-theme-primary/15 text-theme-primary border border-theme-primary/30;
+  }
+
+  .badge-limited {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-400 border border-amber-500/30;
+  }
+
+  .badge-preorder {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-theme-accent/15 text-theme-accent border border-theme-accent/30;
+  }
+
+  .badge-placeholder {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-medium bg-amber-950/40 text-amber-300 border border-amber-500/30;
+  }
+}
